@@ -8,3 +8,17 @@ services:
       - "./etc/nginx.conf:/etc/nginx/nginx.conf"
       - "./etc/conf.d/default.conf:/etc/nginx/conf.d/default.conf"
       - "./site:/usr/share/nginx/html"
+  py1:
+    image: python:3
+    volumes:
+      - "./service:/usr/src/app"
+    environment:
+      MESSAGE: Hello Py1
+    command: ["python", "/usr/src/app/service.py"]
+  py2:
+    image: python:3
+    volumes:
+      - "./service:/usr/src/app"
+    environment:
+      MESSAGE: Hello Py2
+    command: ["python", "/usr/src/app/service.py"]
